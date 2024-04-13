@@ -1,0 +1,39 @@
+#!/bin/csh -f
+# ====================================================================
+# PBS script to run multi-threaded SPAdes on a SINGLE node on Aful2 short reads
+#                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Last modified: Sep 16, 2023
+# ====================================================================
+#PBS -q long
+#PBS -l nodes=1:ppn=24:bigmem
+#PBS -N Aful2_spades_test
+
+set READS_DIR  = "/data2/laz2g/new_data/fastp_outs/Aful2/"
+
+set FW_READS = "Aful2_R1.fastq.gz"
+
+set RE_READS = "Aful2_R2.fastq.gz"
+
+set OUTPUT_DIR = "/data2/laz2g/new_data/spades_outs/Aful2/"
+
+# --------------------------------------------------------------------
+
+set SPADES_HOME = "/usr/local/SPAdes-3.15.5-Linux/bin"
+
+set path = ( $path $SPADES_HOME )
+
+# calculate number of threads to run on
+set nthreads = `cat $PBS_NODEFILE | wc -l`
+echo "Number of threads = "nthreads
+
+# let's copy all input files to scratch directory - the code should run faster
+set SCR = "/scratch/$PBS_JOBID"
+cd $SCR
+cp $READS_DIR"/"$FW_READS ./
+cp $READS_DIR"/"$RE_READS ./
+
+set echo=on
+
+$SPADES_HOME/spades.py -t $nthreads -m 250 --meta -o $OUTPUT_DIR -1 $FW_READS -2 $RE_READS 
+
+unset echo
