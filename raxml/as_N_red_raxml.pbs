@@ -1,0 +1,80 @@
+#!/bin/bash
+
+# PBS script to run raxml-ng on an alignment #
+# 3/15/23 #
+
+#PBS -N as_N_red_raxml
+#PBS -l nodes=1:ppn=24:bigmem
+#PBS -q long
+
+# alignment file paths
+
+K10534_FILE='/data2/laz2g/alignments/as_N_red/as_N_red_K10534.mafft'
+
+K00372_FILE='/data2/laz2g/alignments/as_N_red/as_N_red_K00372.mafft'
+
+K00367_FILE='/data2/laz2g/alignments/as_N_red/as_N_red_K00367.mafft'
+
+K00366_FILE='/data2/laz2g/alignments/as_N_red/as_N_red_K00366.mafft'
+
+# raxml-ng home
+
+RAXML_HOME='/home/laz2g/'
+
+#K10534
+
+cd /data2/laz2g/alignments/as_N_red/outs/
+
+mkdir K10534
+
+cd K10534
+
+$RAXML_HOME./raxml-ng --msa $K10534_FILE --model GTR+G --prefix as_N_red_K10534 --threads 4 --seed 2
+
+
+#K00372
+
+cd /data2/laz2g/alignments/as_N_red/outs/
+
+mkdir K00372
+
+cd K00372
+
+$RAXML_HOME./raxml-ng --msa $K00372_FILE --model GTR+G --prefix as_N_red_K00372 --threads 4 --seed 2
+
+
+#K00367
+
+cd /data2/laz2g/alignments/as_N_red/outs/
+
+mkdir K00367
+
+cd K00367
+
+$RAXML_HOME./raxml-ng --msa $K00367_FILE --model GTR+G --prefix as_N_red_K00367 --threads 4 --seed 2
+
+#K00366
+
+cd /data2/laz2g/alignments/as_N_red/outs/
+
+mkdir K00366
+
+cd K00366
+
+$RAXML_HOME./raxml-ng --msa $K00366_FILE --model GTR+G --prefix as_N_red_K00366 --threads 4 --seed 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

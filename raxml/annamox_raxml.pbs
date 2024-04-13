@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# PBS script to run raxml-ng on an alignment #
+# 3/15/23 #
+
+#PBS -N as_N_red_raxml
+#PBS -l nodes=1:ppn=24:bigmem
+#PBS -q long
+
+# alignment file paths
+
+K15864_FILE='/data2/laz2g/alignments/as_N_red/as_N_red_K15864.mafft'
+
+K00368_FILE='/data2/laz2g/alignments/as_N_red/as_N_red_K00368.mafft'
+
+# raxml-ng home
+
+RAXML_HOME='/home/laz2g/'
+
+#K15864
+
+cd /data2/laz2g/alignments/as_N_red/outs/
+
+mkdir K15864
+
+cd K15864
+
+$RAXML_HOME./raxml-ng --msa $K15864_FILE --model GTR+G --prefix as_N_red_K15864 --threads 4 --seed 2
+
+
+#K00368
+
+cd /data2/laz2g/alignments/as_N_red/outs/
+
+mkdir K00368
+
+cd K00368
+
+$RAXML_HOME./raxml-ng --msa $K00368_FILE --model GTR+G --prefix as_N_red_K00368 --threads 4 --seed 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+

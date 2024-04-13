@@ -1,0 +1,80 @@
+#!/bin/bash
+
+# PBS script to run raxml-ng on an alignment #
+# 3/15/23 #
+
+#PBS -N dis_N_red_raxml
+#PBS -l nodes=1:ppn=24:bigmem
+#PBS -q long
+
+# alignment file paths
+
+K10945_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K10945.mafft'
+
+K10944_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K10944.mafft'
+
+K10535_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K10535.mafft'
+
+K00371_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K00371.mafft'
+
+K00370_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K00370.mafft'
+
+# raxml-ng home
+
+RAXML_HOME='/home/laz2g/'
+
+#K10945
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K10945
+
+cd K10945
+
+$RAXML_HOME./raxml-ng --msa $K10945_FILE --model GTR+G --prefix dis_N_red_K10945 --threads 4 --seed 2
+
+
+#K10944
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K10944
+
+cd K10944
+
+$RAXML_HOME./raxml-ng --msa $K10944_FILE --model GTR+G --prefix dis_N_red_K10944 --threads 4 --seed 2
+
+
+#K10535
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K10535
+
+cd K10535
+
+$RAXML_HOME./raxml-ng --msa $K10535_FILE --model GTR+G --prefix dis_N_red_K10535 --threads 4 --seed 2
+
+#K00371
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K00371
+
+cd K00371
+
+$RAXML_HOME./raxml-ng --msa $K00371_FILE --model GTR+G --prefix dis_N_red_K00371 --threads 4 --seed 2
+
+#K00370
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K00370
+
+cd K00370
+
+$RAXML_HOME./raxml-ng --msa $K00370_FILE --model GTR+G --prefix dis_N_red_K00370 --threads 4 --seed 2
+
+
+
+

@@ -1,0 +1,142 @@
+#!/bin/bash
+
+# PBS script to run raxml-ng on an alignment #
+# 3/15/23 #
+
+#PBS -N denitrification_raxml
+#PBS -l nodes=1:ppn=24:bigmem
+#PBS -q long
+
+# alignment file paths
+
+K00368_FILE='/data2/laz2g/alignments/denitrification/denitrification_K00368.mafft'
+
+K00370_FILE='/data2/laz2g/alignments/denitrification/denitrification_K00370.mafft'
+
+K00371_FILE='/data2/laz2g/alignments/denitrification/denitrification_K00371.mafft'
+
+K00374_FILE='/data2/laz2g/alignments/denitrification/denitrification_K00374.mafft'
+
+K02305_FILE='/data2/laz2g/alignments/denitrification/denitrification_K02305.mafft'
+
+K02567_FILE='/data2/laz2g/alignments/denitrification/denitrification_K02567.mafft'
+
+K02568_FILE='/data2/laz2g/alignments/denitrification/denitrification_K02568.mafft'
+
+K04561_FILE='/data2/laz2g/alignments/denitrification/denitrification_K04561.mafft'
+
+K15864_FILE='/data2/laz2g/alignments/denitrification/denitrification_K15864.mafft'
+
+# raxml-ng home
+
+RAXML_HOME='/home/laz2g/'
+
+#K00368
+
+cd /data2/laz2g/alignments/denitrification/outs/
+
+mkdir K00368
+
+cd K00368
+
+$RAXML_HOME./raxml-ng --msa $K00368_FILE --model GTR+G --prefix denitrification_K00368 --threads 4 --seed 2
+
+
+#K00370
+
+cd /data2/laz2g/alignments/denitrification/outs/
+
+mkdir K00370
+
+cd K00370
+
+$RAXML_HOME./raxml-ng --msa $K00370_FILE --model GTR+G --prefix denitrification_K00370 --threads 4 --seed 2
+
+
+#K00371
+
+cd /data2/laz2g/alignments/denitrification/outs/
+
+mkdir K00371
+
+cd K00371
+
+$RAXML_HOME./raxml-ng --msa $K00371_FILE --model GTR+G --prefix denitrification_K00371 --threads 4 --seed 2
+
+#K00374
+
+cd /data2/laz2g/alignments/denitrification/outs/
+
+mkdir K00374
+
+cd K00374
+
+$RAXML_HOME./raxml-ng --msa $K00374_FILE --model GTR+G --prefix denitrification_K00374 --threads 4 --seed 2
+
+#K02305
+
+cd /data2/laz2g/alignments/denitrification/outs/
+
+mkdir K02305
+
+cd K02305
+
+$RAXML_HOME./raxml-ng --msa $K02305_FILE --model GTR+G --prefix denitrification_K02305 --threads 4 --seed 2
+
+#K02567
+
+cd /data2/laz2g/alignments/denitrification/outs/
+
+mkdir K02567
+
+cd K02567
+
+$RAXML_HOME./raxml-ng --msa $K02567_FILE --model GTR+G --prefix denitrification_K02567 --threads 4 --seed 2
+
+#K02568
+
+cd /data2/laz2g/alignments/denitrification/outs/
+
+mkdir K02568
+
+cd K02568
+
+$RAXML_HOME./raxml-ng --msa $K02568_FILE --model GTR+G --prefix denitrification_K02568 --threads 4 --seed 2
+
+#K04561
+
+cd /data2/laz2g/alignments/denitrification/outs/
+
+mkdir K04561
+
+cd K04561
+
+$RAXML_HOME./raxml-ng --msa $K04561_FILE --model GTR+G --prefix denitrification_K04561 --threads 4 --seed 2
+
+#K15864
+
+cd /data2/laz2g/alignments/denitrification/outs/
+
+mkdir K15864
+
+cd K15864
+
+$RAXML_HOME./raxml-ng --msa $K15864_FILE --model GTR+G --prefix denitrification_K15864 --threads 4 --seed 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,141 @@
+#!/bin/bash
+
+# PBS script to run raxml-ng on an alignment #
+# 3/15/23 #
+
+#PBS -N dis_N_red_raxml
+#PBS -l nodes=1:ppn=24:bigmem
+#PBS -q long
+
+# alignment file paths
+
+K00362_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K00362.mafft'
+
+K00363_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K00363.mafft'
+
+K00370_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K00370.mafft'
+
+K00371_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K00371.mafft'
+
+K00374_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K00374.mafft'
+
+K02567_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K02567.mafft'
+
+K02568_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K02568.mafft'
+
+K03385_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K03385.mafft'
+
+K15876_FILE='/data2/laz2g/alignments/dis_N_red/dis_N_red_K15876.mafft'
+
+# raxml-ng home
+
+RAXML_HOME='/home/laz2g/'
+
+#K00362
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K00362
+
+cd K00362
+
+$RAXML_HOME./raxml-ng --msa $K00362_FILE --model GTR+G --prefix dis_N_red_K00362 --threads 4 --seed 2
+
+
+#K00363
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K00363
+
+cd K00363
+
+$RAXML_HOME./raxml-ng --msa $K00363_FILE --model GTR+G --prefix dis_N_red_K00363 --threads 4 --seed 2
+
+
+#K00370
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K00370
+
+cd K00370
+
+$RAXML_HOME./raxml-ng --msa $K00370_FILE --model GTR+G --prefix dis_N_red_K00370 --threads 4 --seed 2
+
+#K00371
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K00371
+
+cd K00371
+
+$RAXML_HOME./raxml-ng --msa $K00371_FILE --model GTR+G --prefix dis_N_red_K00371 --threads 4 --seed 2
+
+#K00374
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K00374
+
+cd K00374
+
+$RAXML_HOME./raxml-ng --msa $K00374_FILE --model GTR+G --prefix dis_N_red_K00374 --threads 4 --seed 2
+
+#K02567
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K02567
+
+cd K02567
+
+$RAXML_HOME./raxml-ng --msa $K02567_FILE --model GTR+G --prefix dis_N_red_K02567 --threads 4 --seed 2
+
+#K02568
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K02568
+
+cd K02568
+
+$RAXML_HOME./raxml-ng --msa $K02568_FILE --model GTR+G --prefix dis_N_red_K02568 --threads 4 --seed 2
+
+#K03385
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K03385
+
+cd K03385
+
+$RAXML_HOME./raxml-ng --msa $K03385_FILE --model GTR+G --prefix dis_N_red_K03385 --threads 4 --seed 2
+
+
+#K15876
+
+cd /data2/laz2g/alignments/dis_N_red/outs/
+
+mkdir K15876
+
+cd K15876
+
+$RAXML_HOME./raxml-ng --msa $K15876_FILE --model GTR+G --prefix dis_N_red_K15876 --threads 4 --seed 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
