@@ -1,0 +1,41 @@
+#!/bin/bash
+
+## script for running some samtools commands ##
+
+## converting the sam output from minimap2 to a .bam file, the sorting and indexing the file ##
+
+# PBS script to run samtools on Aful2.sam #
+# 9/15/23 #
+
+#PBS -N Aful2_samtools
+#PBS -l nodes=1:ppn=24
+#PBS -q short
+
+## Variables 
+
+SAM_FILE='/data2/laz2g/minimap2/outs/Aful2/Aful2.sam'
+OUT_DIR='/data2/laz2g/samtools/outs/'
+
+# activate conda env
+
+source /home/laz2g/miniconda3/etc/profile.d/conda.sh
+
+conda activate
+
+conda activate samtools_env
+
+# convrting from sam to bam
+
+samtools view -S -b $SAM_FILE > $OUT_DIR/Aful2.bam
+
+# sorting the bam file
+
+samtools sort $OUT_DIR/Aful2.bam -o $OUT_DIR/Aful2.sorted.bam
+
+#indexing the bam file
+
+samtools index $OUT_DIR/Aful2.sorted.bam
+
+
+
+
