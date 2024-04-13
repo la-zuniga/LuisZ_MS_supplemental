@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# PBS script to run prodigal on Acon2 contigs #
+# 04/15/22 #
+
+#PBS -N Acon2_prodigal
+#PBS -l nodes=1:ppn=12
+#PBS -q medium
+
+CONTIGS_DIR='/data2/laz2g/spades_outs/contigs.fasta'
+OUT_DIR='/data2/laz2g/prodigal_outs/Acon2'
+PRODIGAL_DIR='/data2/laz2g/'
+
+
+$PRODIGAL_DIR./prodigal -i $CONTIGS_DIR -a $OUT_DIR/Acon2_aa.faa -o $OUT_DIR/Acon2.out -p meta
+
+

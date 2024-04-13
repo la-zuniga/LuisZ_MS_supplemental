@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# PBS script to run prodigal on Xmut2 contigs #
+# 04/15/22 #
+
+#PBS -N Xmut2_prodigal
+#PBS -l nodes=1:ppn=12
+#PBS -q medium
+
+CONTIGS_DIR='/data2/laz2g/spades_outs/contigs.fasta'
+OUT_DIR='/data2/laz2g/prodigal_outs/Xmut2'
+PRODIGAL_DIR='/data2/laz2g/'
+
+
+$PRODIGAL_DIR./prodigal -i $CONTIGS_DIR -a $OUT_DIR/Xmut2_aa.faa -o $OUT_DIR/Xmut2.out -p meta
+
+
