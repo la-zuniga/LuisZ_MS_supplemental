@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# PBS script to run concoct on Acau2 #
+# 10/08/23 #
+
+#PBS -N Acau2_CONCOCT
+#PBS -l nodes=1:ppn=24:bigmem
+#PBS -q medium
+
+# definig path variables 
+
+CONTIGS_FILE='/data2/laz2g/spades_outs/Acau2/contigs.fasta'
+OUT_DIR='/data2/laz2g/metabinner/outs/Acau2'
+BAM_FILE='/data2/laz2g/samtools_outs/Acau2.sorted.bam'
+PYTHON_SCRIPT='/data2/laz2g/new_data/metabinner/scripts/'
+
+# source conda.sh
+
+source /home/laz2g/miniconda3/etc/profile.d/conda.sh
+
+# activate concoct environment
+
+conda activate
+
+conda activate concoct_env 
+
+# cut up fasta contigs
+
+cut_up_fasta.py $CONTIGS_FILE -c 10000 -o 0 --merge_last -b $OUT_DIR/contigs_10K.bed > $OUT_DIR/contigs_10K.fa
+
+conda deactivate
+
+# generate kmer profile
+
+conda activate metabinner_env 
+
+cd '/data2/laz2g/new_data/metabinner/outs/Acau2'
+
+Filter_tooshort.py $OUT_DIR/contigs_10K.fa 499
+
+gen_kmer.py $OUT_DIR/contigs_10K.fa 499 4
+
+conda deactivate
+
+conda activate concoct_env
+
+# generate converage_table
+
+concoct_coverage_table.py $OUT_DIR/contigs_10K.bed $BAM_FILE > $OUT_DIR/coverage_table.tsv
+
+conda deactivate
+
+conda deactivate 
+
+# run the coverage table sort python script 
+
+cd $OUT_DIR
+
+python $PYTHON_SCRIPT/coverage_table_sort.py
+
+# removing blank lines from the new coverage table
+
+sed -i.bak '/^$/d' coverage_table_sort.tsv
+

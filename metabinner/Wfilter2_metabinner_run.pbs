@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# PBS script to run metabinner on Wfilter2 #
+# 10/08/23 #
+
+#PBS -N Wfilter2_metabinner
+#PBS -l nodes=1:ppn=24:bigmem
+#PBS -q long
+
+# defining path variables
+
+CONTIGS_FILE='/data2/laz2g/metabinner/outs/Wfilter2/contigs_10K_499.fa'
+
+OUT_DIR='/data2/laz2g/metabinner/outs/Wfilter2/binner_outs/Wfilter2'
+
+COVERAGE_TABLE='/data2/laz2g/metabinner/outs/Wfilter2/coverage_table_sort.tsv'
+
+KMER_FILE='/data2/laz2g/metabinner/outs/Wfilter2/contigs_10K_kmer_4_f499.csv'
+
+METABINNER_BIN='/home/laz2g/miniconda3/envs/metabinner_env/bin/'
+
+
+source /home/laz2g/miniconda3/etc/profile.d/conda.sh
+
+conda activate
+
+conda activate metabinner_env 
+
+bash run_metabinner.sh -a $CONTIGS_FILE -o $OUT_DIR -d $COVERAGE_TABLE -k $KMER_FILE -p $METABINNER_BIN -t 32
+
+conda deactivate
