@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# PBS script to run minimap on Vrig3 #
+# this will align short reads to contigs to produce sam (sequence alignment map) files #
+# 04/15/22 #
+
+#PBS -N Vrig3_minimap2
+#PBS -l nodes=1:ppn=12
+#PBS -q medium
+
+CONTIGS_DIR='/data2/laz2g/spades_outs/contigs.fasta'
+SHORTRREADS_DIR='/data2/laz2g/fastp_outs/'
+OUT_DIR='/data2/laz2g/minimap_outs/Vrig3'
+MINIMAP_DIR='/data2/laz2g/'
+
+
+$MINIMAP_DIR./minimap2 -ax sr $CONTIGS_DIR $SHORTREADS_DIR/Vrig3_1_R1.fastq.gz $SHORTREADS_DIR/Vrig3_1_R2.fastq.gz > $OUTDIR/Vrig3.sam
+
+
